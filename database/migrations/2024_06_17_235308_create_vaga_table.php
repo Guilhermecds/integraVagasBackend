@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('complemento')->nullable();
             $table->string('cidade')->nullable();
             $table->string('descricao')->nullable();
-            $table->integer('idsituacaovaga');
+            $table->boolean('idsituacaovaga');
             $table->string('bonus');
             $table->timestamps();
         });

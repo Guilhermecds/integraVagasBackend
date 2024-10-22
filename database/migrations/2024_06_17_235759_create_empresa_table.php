@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('numero')->nullable();
             $table->string('complemento')->nullable();
             $table->string('cidade')->nullable();
+            $table->boolean('idsituacaoempresa');
             $table->timestamps();
         });
     }

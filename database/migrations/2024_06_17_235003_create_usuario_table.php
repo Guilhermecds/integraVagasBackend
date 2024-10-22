@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('complemento')->nullable(); 
             $table->string('cidade')->nullable(); 
             $table->string('curriculo')->nullable();
-            $table->integer('idsituacaousuario');
+            $table->boolean('idsituacaousuario');
             $table->foreignId('idformacao')->constrained('formacao');
             $table->timestamps();
         });

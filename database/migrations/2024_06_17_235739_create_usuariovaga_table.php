@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('agendamento', function (Blueprint $table) {
+        Schema::create('usuariovaga', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('data_horario_visita');
-            $table->foreignId('funcionario_id')->constrained('funcionario');
-            $table->foreignId('usuario_id')->constrained('usuario');
-            $table->json('vacinas')->nullable();
+            $table->foreignId('idusuario')->constrained('usuario');
+            $table->foreignId('idvaga')->constrained('vaga');
+            $table->foreignId('idempresa')->constrained('empresa');
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('agendamento');
+        Schema::dropIfExists('usuariovaga');
     }
 };

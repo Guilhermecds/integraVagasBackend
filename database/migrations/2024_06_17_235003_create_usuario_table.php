@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('usuario', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('senha');
             $table->boolean('sou_deficiente')->default(false);
             $table->date('data_nascimento');
             $table->foreignId('idtipousuario')->constrained('tipousuario');
@@ -27,7 +26,7 @@ return new class extends Migration
             $table->string('complemento')->nullable(); 
             $table->string('cidade')->nullable(); 
             $table->string('curriculo')->nullable();
-            $table->foreignId('idsituacaousuario')->constrained('situacao');
+            $table->integer('idsituacaousuario');
             $table->foreignId('idformacao')->constrained('formacao');
             $table->timestamps();
         });

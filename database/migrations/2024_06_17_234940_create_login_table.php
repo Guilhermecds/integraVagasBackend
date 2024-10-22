@@ -13,18 +13,11 @@ return new class extends Migration
     {
         Schema::create('login', function (Blueprint $table) {
             $table->id();
-            $table->string('cpf');
-            $table->string('password');
+            $table->string('cpf_cnpj');
+            $table->string('senha');
+            $table->foreignId('idusuario')->constrained('usuario')->nullable();
+            $table->foreignId('idempresa')->constrained('empresa')->nullable();
             $table->timestamps();
-        });
-
-        Schema::create('sessao', function (Blueprint $table) {
-            $table->string('id')->primary();
-            $table->foreignId('user_id')->nullable()->constrained('login')->onDelete('cascade');
-            $table->string('ip_address', 45)->nullable();
-            $table->text('user_agent')->nullable();
-            $table->longText('payload');
-            $table->integer('last_activity')->index();
         });
     }
 
@@ -34,6 +27,5 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('login');
-        Schema::dropIfExists('sessao');
     }
 };

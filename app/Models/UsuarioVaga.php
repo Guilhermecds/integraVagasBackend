@@ -3,28 +3,31 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class Login extends Authenticatable
+class UsuarioVaga extends Model
 {
     use HasFactory;
 
-    protected $table = 'login';
+    protected $table = 'usuariovaga';
 
     protected $fillable = [
-        'cpf_cnpj',
-        'senha',
         'idusuario',
-        'idempresa'
+        'idvaga',
+        'idempresa',
     ];
 
-    protected $hidden = [
-        'senha',
-    ];
+    // O Eloquent já assume que a tabela possui um campo 'id' como chave primária
 
+    // Definindo relacionamentos
     public function usuario()
     {
         return $this->belongsTo(Usuario::class, 'idusuario');
+    }
+
+    public function vaga()
+    {
+        return $this->belongsTo(Vaga::class, 'idvaga');
     }
 
     public function empresa()
